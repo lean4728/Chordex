@@ -1,4 +1,6 @@
-# README
+# Chordex
+コード進行から曲を検索するWebアプリ Chordex
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
