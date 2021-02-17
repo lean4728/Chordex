@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'static_pages/top'
-  root 'application#hello'
+  root 'static_pages#top'
+  get  'static_pages/top'
 end
