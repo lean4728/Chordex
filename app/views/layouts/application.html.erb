@@ -6,12 +6,31 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="area_logo_header">
+          <%= link_to(image_tag('logo/logo_header.svg', width: '320'), '/', id: 'logo') %>
+        </div>
+        <nav class="nav_header">
+          <ul class="nav navbar-nav navbar-right list_nav_header">
+            <li><%= link_to('ABOUT', '') %></li>
+            <li><%= link_to('FEATURE', '') %></li>
+            <li><%= link_to('EXPLORE', '') %></li>
+            <li><%= link_to('CONTACT', '') %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
