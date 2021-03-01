@@ -1,5 +1,5 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 /* mixins, variables, etc. */
 
@@ -8,7 +8,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
 }
 /*
 section {
@@ -16,15 +16,26 @@ section {
 }
 
 textarea {
-  resize: vertical;
+  resize: vertical;  
 }
 */
 .center {
   text-align: center;
+  > .container {
+    color: white;
+    font-family: ヒラギノ角ゴシック;
+    font-size: 2.0em;
+  }
 }
 
 .ttl {
   margin-bottom: 10px;
+}
+
+.container {
+  max-width: 1160px;
+  padding: 0 40px;
+  margin: 0 auto;
 }
 
 /* typography */
@@ -53,6 +64,20 @@ p {
     text-decoration: none;
   }
 }
+/*
+header {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+header > .container {
+  display: flex;
+  align-items: center;
+}
+*/
 
 /* footer */
 
@@ -77,5 +102,20 @@ footer {
       float: left;
       margin-left: 15px;
     }
+  }
+}
+
+/* top */
+
+.area_top {
+  background-image: image-url('bg/bg_top.jpg');
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  > .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
