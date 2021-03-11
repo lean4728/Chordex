@@ -16,24 +16,18 @@ section {
 }
 
 textarea {
-  resize: vertical;  
+  resize: vertical;
 }
 */
 .center {
   text-align: center;
-  > .container {
-    color: white;
-    font-family: ヒラギノ角ゴシック;
-    font-size: 2.0em;
+  h1 {
+    margin-bottom: 30px;
   }
 }
 
-.ttl {
-  margin-bottom: 10px;
-}
-
 .container {
-  max-width: 1160px;
+  max-width: 1200px;
   padding: 0 40px;
   margin: 0 auto;
 }
@@ -42,6 +36,22 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
 }
 
 p {
@@ -64,20 +74,6 @@ p {
     text-decoration: none;
   }
 }
-/*
-header {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-header > .container {
-  display: flex;
-  align-items: center;
-}
-*/
 
 /* footer */
 
@@ -105,9 +101,10 @@ footer {
   }
 }
 
+
 /* top */
 
-.area_top {
+.jumbotron {
   background-image: image-url('bg/bg_top.jpg');
   background-size: cover;
   height: 500px;
@@ -117,5 +114,12 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    color: white;
+    font-family: ヒラギノ角ゴシック;
+    > .ttl {
+      font-size: 3.0em;
+      line-height: 1.5;
+    }
   }
 }
