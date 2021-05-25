@@ -1,0 +1,37 @@
+<%= form_with(model: chord) do |form| %>
+  <% if chord.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chord.errors.count, "error") %> prohibited this chord from being saved:</h2>
+
+      <ul>
+        <% chord.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :song %>
+    <%= form.text_field :song %>
+  </div>
+
+  <div class="field">
+    <%= form.label :artist %>
+    <%= form.text_field :artist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chords %>
+    <%= form.text_field :chords %>
+  </div>
+
+  <div class="field">
+    <%= form.label :page_url %>
+    <%= form.text_field :page_url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

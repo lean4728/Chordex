@@ -27,6 +27,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 
+gem 'mechanize'
+gem 'activerecord-import'
+gem 'ransack'
+gem 'ruby-debug-ide'
+gem 'debase'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
