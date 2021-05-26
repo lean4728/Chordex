@@ -1,41 +1,99 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Chordex</h1>
-<%= search_form_for @q do |f| %>
-    <%= f.label :chords_cont %>
-    <%= f.search_field :chords_cont %>
-    <%= f.submit %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>Song</th>
-      <th>Artist</th>
-      <th>YouTube</th>
-      <th>Spotify</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="search-form">
+    <%= search_form_for @q do |f| %>
+      <div class="form-row">
+        <%= f.label :chords_cont, '楽曲コード', id: 'label-chords' %>
+        <% (1..4).each do |n| %>
+          <div class="formgroup col-md-3">
+            <select id="chord<%= n %>" class="form-control" onchange="clickBtn()">
+              <option value="">-</option>
+              <% roots = ['C', 'C#', 'D♭', 'D', 'D#', 'E♭', 'E', 'F', 'F#', 'G♭', 'G', 'G#', 'A♭', 'A', 'A#', 'B♭', 'B'] %>
+              <% roots.each do |r| %>
+                <option value="<%= r %>"><%= r %></option>
+                <option value="<%= r %>7"><%= r %>7</option>
+                <option value="<%= r %>m"><%= r %>m</option>
+                <option value="<%= r %>m7"><%= r %>m7</option>
+                <option value="<%= r %>M7"><%= r %>M7</option>
+                <option value="<%= r %>sus4"><%= r %>sus4</option>
+                <option value="<%= r %>dim"><%= r %>dim</option>
+              <% end %>
+            </select>
+          </div>
+        <% end %>
 
-  <tbody>
-    <% @chords.each do |chord| %>
-      <tr>
-        <td><%= link_to(chord.song, chord.page_url) %></td>
-        <td><%= chord.artist %></td>
-        <td>
-          <%= link_to(image_tag('youtube.svg', width: '25'), @youtube_url + chord.song + '+' + chord.artist) %>
-        </td>
-        <td>
-          <%= link_to(image_tag('spotify.svg', width: '25'), @spotify_url + chord.song + '%20' + chord.artist) %>
-        </td>
-        <td><%= link_to 'Show', chord %></td>
-        <td><%= link_to 'Edit', edit_chord_path(chord) %></td>
-        <td><%= link_to 'Destroy', chord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <script>
+          const c1 = localStorage.getItem('selectedIndex_c1');
+          const c2 = localStorage.getItem('selectedIndex_c2');
+          const c3 = localStorage.getItem('selectedIndex_c3');
+          const c4 = localStorage.getItem('selectedIndex_c4');
+          document.getElementById('chord1').options[c1].selected = true;
+          document.getElementById('chord2').options[c2].selected = true;
+          document.getElementById('chord3').options[c3].selected = true;
+          document.getElementById('chord4').options[c4].selected = true;
+
+          function clickBtn() {
+            const select_c1 = document.getElementById('chord1');
+            const select_c2 = document.getElementById('chord2');
+            const select_c3 = document.getElementById('chord3');
+            const select_c4 = document.getElementById('chord4');
+            const chords = select_c1.value + select_c2.value + select_c3.value + select_c4.value;
+            document.getElementById('q_chords_cont').setAttribute('value', chords);
+
+            localStorage.setItem('selectedIndex_c1', select_c1.selectedIndex);
+            localStorage.setItem('selectedIndex_c2', select_c2.selectedIndex);
+            localStorage.setItem('selectedIndex_c3', select_c3.selectedIndex);
+            localStorage.setItem('selectedIndex_c4', select_c4.selectedIndex);
+          }
+        </script>
+
+        <%= f.search_field :chords_cont %>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.label :song_cont, '曲名' %>
+          <%= f.search_field :song_cont, class: 'form-control', placeholder: "曲名を入力" %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.label :artist_cont, '歌手名' %>
+          <%= f.search_field :artist_cont, class: 'form-control', placeholder: "歌手名を入力" %>
+        </div>
+        <%= f.submit '検索', class: 'form-group btn btn-primary' %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="">
+      <tr>
+        <th scope="col"><%= sort_link(@q, :song, '曲名', default_order: :asc) %></th>
+        <th scope="col"><%= sort_link(@q, :artist, '歌手名', default_order: :asc) %></th>
+        <th scope="col">YouTube</th>
+        <th scope="col">Spotify</th>
+        <th scope="col" colspan="3"></th>
+      </tr>
+    </thead>
 
-<br>
+    <tbody>
+      <% @chords.each do |chord| %>
+        <tr>
+          <th scope="row"><%= link_to(chord.song, chord.page_url) %></th>
+          <td><%= chord.artist %></td>
+          <td>
+            <%= link_to(image_tag('youtube.svg', width: '25'), @youtube_url + chord.song + '+' + chord.artist) %>
+          </td>
+          <td>
+            <%= link_to(image_tag('spotify.svg', width: '25'), @spotify_url + chord.song + '%20' + chord.artist) %>
+          </td>
+          <td><%= link_to '閲覧', chord %></td>
+          <td><%= link_to '編集', edit_chord_path(chord) %></td>
+          <td><%= link_to '削除', chord, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Chord', new_chord_path %>
+  <br>
+
+  <%= link_to '新規作成', new_chord_path %>
+</div>

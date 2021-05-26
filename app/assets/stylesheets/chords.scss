@@ -1,3 +1,29 @@
 // Place all the styles related to the chords controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-form {
+  margin-bottom: 25px;
+  float: left;
+  width: 50%;
+}
+
+#label-chords {
+  padding-left: 15px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+#q_chords_cont {
+  display: none;
+}
+
+.btn {
+  margin-left: 15px;
+}
+
+thead {
+  background-color: lightblue;
+}
