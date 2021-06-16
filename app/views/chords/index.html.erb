@@ -63,35 +63,39 @@
       </div>
     <% end %>
   </div>
-  <table class="table table-striped table-hover">
-    <thead class="">
-      <tr>
-        <th scope="col"><%= sort_link(@q, :song, '曲名', default_order: :asc) %></th>
-        <th scope="col"><%= sort_link(@q, :artist, '歌手名', default_order: :asc) %></th>
-        <th scope="col">YouTube</th>
-        <th scope="col">Spotify</th>
-        <th scope="col" colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @chords.each do |chord| %>
+  <div>
+    <%= paginate @chords %>
+    <table class="table table-striped table-hover">
+      <thead class="">
         <tr>
-          <th scope="row"><%= link_to(chord.song, chord.page_url) %></th>
-          <td><%= chord.artist %></td>
-          <td>
-            <%= link_to(image_tag('youtube.svg', width: '25'), @youtube_url + chord.song + '+' + chord.artist) %>
-          </td>
-          <td>
-            <%= link_to(image_tag('spotify.svg', width: '25'), @spotify_url + chord.song + '%20' + chord.artist) %>
-          </td>
-          <td><%= link_to '閲覧', chord %></td>
-          <td><%= link_to '編集', edit_chord_path(chord) %></td>
-          <td><%= link_to '削除', chord, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+          <th scope="col"><%= sort_link(@q, :song, '曲名', default_order: :asc) %></th>
+          <th scope="col"><%= sort_link(@q, :artist, '歌手名', default_order: :asc) %></th>
+          <th scope="col">YouTube</th>
+          <th scope="col">Spotify</th>
+          <th scope="col" colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @chords.each do |chord| %>
+          <tr>
+            <th scope="row"><%= link_to(chord.song, chord.page_url) %></th>
+            <td><%= chord.artist %></td>
+            <td>
+              <%= link_to(image_tag('youtube.svg', width: '25'), @youtube_url + chord.song + '+' + chord.artist) %>
+            </td>
+            <td>
+              <%= link_to(image_tag('spotify.svg', width: '25'), @spotify_url + chord.song + '%20' + chord.artist) %>
+            </td>
+            <td><%= link_to '閲覧', chord %></td>
+            <td><%= link_to '編集', edit_chord_path(chord) %></td>
+            <td><%= link_to '削除', chord, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @chords %>
+  </div>
 
   <br>
 

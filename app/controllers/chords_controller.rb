@@ -8,7 +8,7 @@ class ChordsController < ApplicationController
   def index
     # @chords = Chord.all
     @q = Chord.ransack(params[:q])
-    @chords = @q.result(distinct: true)
+    @chords = @q.result(distinct: true).page(params[:page])
     @youtube_url = YOUTUBE_URL
     @spotify_url = SPOTIFY_URL
   end
