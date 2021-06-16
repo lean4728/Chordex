@@ -2,7 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.search-form label {  
+  // background: #F9F9F9;
+  padding: 10px 5px;
+  color: #555555;
+}
+
 .search-form {
+  // background: #FCFCFC;
+  // border: solid;
+  // border-color: lightgray;
+  // border-width: 0.5px;
+  // border-radius: 10px;
+  padding: 5px 0px;
   margin-bottom: 25px;
   width: 50%;
 }
@@ -29,6 +41,24 @@
    margin-right: auto;
  }
 */
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 2px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 2px;    /*角を丸くする*/
+}
+
 thead {
-  background-color: lightblue;
+  background-color: #add5fe;
 }
