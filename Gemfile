@@ -32,6 +32,7 @@ gem 'activerecord-import'
 gem 'ransack'
 gem 'ruby-debug-ide'
 gem 'debase'
+gem 'kaminari'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
